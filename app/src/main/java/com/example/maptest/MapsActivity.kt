@@ -138,7 +138,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val Sydney = mMap.addMarker(
             MarkerOptions()
                 .position(SYDNEY)
-                .title("大阪")
+                .title("シドニー")
                 .icon(dispicon)
         )
         Sydney.setTag(0)
