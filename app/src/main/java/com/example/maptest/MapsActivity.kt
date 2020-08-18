@@ -5,19 +5,21 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.*
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
+import com.google.android.gms.maps.model.MarkerOptions
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.InputStream
 import java.io.InputStreamReader
-import java.lang.StringBuilder
 import java.net.HttpURLConnection
 import java.net.URL
-
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -134,6 +136,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         //マーカー表示
         // mMap.addMarker(MarkerOptions().position(sydney).title("酒田だよ"))
 
+
+
         val dispicon = BitmapDescriptorFactory.fromResource(R.drawable.kumori)
         val Sydney = mMap.addMarker(
             MarkerOptions()
@@ -142,6 +146,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 .icon(dispicon)
         )
         Sydney.setTag(0)
+
+        /*
+        val cu = CameraUpdateFactory.newLatLng(
+            LatLng(43.0675, 141.350784)
+        )
+        */
+
+        val cu = CameraUpdateFactory.newLatLngZoom(
+            LatLng(43.0675, 141.350784), 15f
+        )
+        mMap.moveCamera(cu)
 
         // Set a listener for marker click.
        // mMap.setOnMapClickListener(onMarkerClick(Sydney))
